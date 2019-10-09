@@ -34,7 +34,6 @@ jobs:
           buildpack: https://github.com/cloudfoundry/binary-buildpack
           no-route: true
           command: ./exec
-          path: app
         EOF
 
         cp -rp config app/config
