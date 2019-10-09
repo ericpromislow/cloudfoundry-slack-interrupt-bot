@@ -45,10 +45,10 @@ jobs:
     - name: Deploy
       uses: "louisthomas/cloud-foundry-cli-action@master"
       env:
-        CF_API_ENDPOINT: ${{ secrets.CF_API_ENDPOINT }}
-        ORG: ${{ secrets.ORG }}
-        SPACE: ${{ secrets.SPACE }}
-        USERNAME: ${{ secrets.USERNAME }}
-        PASSWORD: ${{ secrets.PASSWORD }}
+        CF_API_ENDPOINT: secrets.CF_API_ENDPOINT
+        ORG: secrets.ORG
+        SPACE: secrets.SPACE
+        USERNAME: secrets.USERNAME
+        PASSWORD: secrets.PASSWORD
         APP_NAME: cloudfoundry-slack-interrupt-bot
         ARTIFACT_PATH: .
