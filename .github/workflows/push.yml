@@ -50,4 +50,4 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
     - name: deploy
-      run: cf push -f app/cf.yml
+      run: /usr/local/bin/cf push -f app/cf.yml
