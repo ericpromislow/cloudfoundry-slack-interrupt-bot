@@ -1,0 +1,43 @@
+name: push
+on:
+- push
+jobs:
+  push:
+    name: Push
+    runs-on: ubuntu-18.04
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v1
+    - name: Build app
+      run: |
+        set -eu
+
+        pwd
+
+        # avoids google default credentials error during validation
+        export PAIRIST_API_KEY=fake-token
+
+        mkdir app
+
+        curl -o app/slack-delegate-bot https://github.com/dpb587/slack-delegate-bot/releases/download/v0.7.0/delegatebot-0.7.0-linux-amd64
+        echo "1f2db68e7cb1785a5419cface1ca5f0c4f76d83cff6aac299b6bfc6937a65786  app/slack-delegate-bot" | shasum -c
+
+        echo 'exec ./slack-delegate-bot --config=config/*.yml --config=config/default.delegatebot ${COMMAND:-run}' > app/exec
+        chmod +x app/*
+
+        cat > app/cf.yml <<EOF
+        applications:
+        - name: ((app_name))
+          memory: 32M
+          instances: 1
+          buildpack: https://github.com/cloudfoundry/binary-buildpack
+          no-route: true
+          command: ./exec
+          path: app
+        EOF
+
+        cp -rp /github/workspace/config app/config
+
+        cd app
+
+        COMMAND=validate ./exec
