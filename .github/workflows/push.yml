@@ -28,7 +28,7 @@ jobs:
 
         cat > app/cf.yml <<EOF
         applications:
-        - name: ((app_name))
+        - name: cloudfoundry-slack-interrupt-bot
           memory: 32M
           instances: 1
           buildpack: https://github.com/cloudfoundry/binary-buildpack
@@ -43,12 +43,11 @@ jobs:
 
         COMMAND=validate ./exec
     - name: Deploy
-      uses: "louisthomas/cloud-foundry-cli-action@master"
+      uses: "dpb587/cf-action@master"
       env:
-        CF_API_ENDPOINT: secrets.CF_API_ENDPOINT
-        ORG: secrets.ORG
-        SPACE: secrets.SPACE
-        USERNAME: secrets.USERNAME
-        PASSWORD: secrets.PASSWORD
-        APP_NAME: cloudfoundry-slack-interrupt-bot
-        ARTIFACT_PATH: .
+        CF_API_ENDPOINT: ${{ secrets.CF_API_ENDPOINT }}
+        CF_ORGANIZATION: ${{ secrets.ORG }}
+        CF_SPACE: ${{ secrets.SPACE }}
+        CF_USERNAME: ${{ secrets.USERNAME }}
+        CF_PASSWORD: ${{ secrets.PASSWORD }}
+      args: push -f app/cf.yml
