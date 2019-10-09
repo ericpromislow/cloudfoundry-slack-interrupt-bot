@@ -43,7 +43,7 @@ jobs:
 
         COMMAND=validate ./exec
     - name: Deploy
-      uses: louisthomas/cloud-foundry-cli-action@master
+      uses: "louisthomas/cloud-foundry-cli-action@master"
       env:
         CF_API_ENDPOINT: ${{ secrets.CF_API_ENDPOINT }}
         ORG: ${{ secrets.ORG }}
