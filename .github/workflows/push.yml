@@ -45,7 +45,7 @@ jobs:
     - name: Deploy
       uses: "dpb587/cf-action@master"
       env:
-        CF_API_ENDPOINT: ${{ secrets.CF_API_ENDPOINT }}
+        CF_API: ${{ secrets.CF_API_ENDPOINT }}
         CF_ORGANIZATION: ${{ secrets.ORG }}
         CF_SPACE: ${{ secrets.SPACE }}
         CF_USERNAME: ${{ secrets.USERNAME }}
