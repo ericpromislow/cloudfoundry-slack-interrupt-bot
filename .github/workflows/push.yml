@@ -19,7 +19,7 @@ jobs:
 
         mkdir app
 
-        curl -o app/slack-delegate-bot https://github.com/dpb587/slack-delegate-bot/releases/download/v0.7.0/delegatebot-0.7.0-linux-amd64
+        curl -Lo app/slack-delegate-bot https://github.com/dpb587/slack-delegate-bot/releases/download/v0.7.0/delegatebot-0.7.0-linux-amd64
         echo "1f2db68e7cb1785a5419cface1ca5f0c4f76d83cff6aac299b6bfc6937a65786  app/slack-delegate-bot" | shasum -c
 
         echo 'exec ./slack-delegate-bot --config=config/*.yml --config=config/default.delegatebot ${COMMAND:-run}' > app/exec
