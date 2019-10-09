@@ -49,7 +49,6 @@ jobs:
         ORG: ${{ secrets.ORG }}
         SPACE: ${{ secrets.SPACE }}
         USERNAME: ${{ secrets.USERNAME }}
+        PASSWORD: ${{ secrets.PASSWORD }}
         APP_NAME: cloudfoundry-slack-interrupt-bot
         ARTIFACT_PATH: app/cf.yml
-      secrets:
-      - PASSWORD
