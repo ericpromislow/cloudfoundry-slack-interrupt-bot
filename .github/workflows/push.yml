@@ -43,11 +43,11 @@ jobs:
         COMMAND=validate ./exec
     - name: Deploy
       uses: "dpb587/cf-action@master"
-      env:
-        CF_API: ${{ secrets.CF_API_ENDPOINT }}
-        CF_ORGANIZATION: ${{ secrets.ORG }}
-        CF_SPACE: ${{ secrets.SPACE }}
-        CF_USERNAME: ${{ secrets.USERNAME }}
-        CF_PASSWORD: ${{ secrets.PASSWORD }}
       with:
-        args: push -f app/cf.yml -p app
+        api: ${{ secrets.CF_API_ENDPOINT }}
+        organization: ${{ secrets.ORG }}
+        space: ${{ secrets.SPACE }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+    - name: deploy
+      run: cf push -f app/cf.yml
