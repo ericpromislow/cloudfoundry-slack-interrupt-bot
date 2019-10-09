@@ -50,4 +50,6 @@ jobs:
         CF_SPACE: ${{ secrets.SPACE }}
         CF_USERNAME: ${{ secrets.USERNAME }}
         CF_PASSWORD: ${{ secrets.PASSWORD }}
-      args: push -f app/cf.yml
+      with:
+        entrypoint: /usr/local/bin/cf
+        args: push -f app/cf.yml
