@@ -12,7 +12,9 @@ jobs:
       run: |
         set -eu
 
+        cd "$GITHUB_WORKSPACE"
         pwd
+        ls -l
 
         # avoids google default credentials error during validation
         export PAIRIST_API_KEY=fake-token
