@@ -42,3 +42,7 @@ jobs:
         cd app
 
         COMMAND=validate ./exec
+    - name: debug
+      run: ls -al app
+    # - name: Deploy to CloudFoundry
+    #   uses: louisthomas/cloud-foundry-cli-action@master
