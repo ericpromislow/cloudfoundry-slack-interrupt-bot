@@ -42,7 +42,14 @@ jobs:
         cd app
 
         COMMAND=validate ./exec
-    - name: debug
-      run: ls -al app
-    # - name: Deploy to CloudFoundry
-    #   uses: louisthomas/cloud-foundry-cli-action@master
+    - name: Deploy
+      uses: louisthomas/cloud-foundry-cli-action@master
+      env:
+        CF_API_ENDPOINT: ${{ secrets.CF_API_ENDPOINT }}
+        ORG: ${{ secrets.ORG }}
+        SPACE: ${{ secrets.SPACE }}
+        USERNAME: ${{ secrets.USERNAME }}
+        APP_NAME: cloudfoundry-slack-interrupt-bot
+        ARTIFACT_PATH: app/cf.yml
+      secrets:
+      - PASSWORD
