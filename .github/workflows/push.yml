@@ -50,5 +50,5 @@ jobs:
         CF_USERNAME: ${{ secrets.USERNAME }}
         CF_PASSWORD: ${{ secrets.PASSWORD }}
       with:
-        entrypoint: /cf.sh
-        args: push -f app/cf.yml
+        manifest: app/cf.yml
+        path: app
