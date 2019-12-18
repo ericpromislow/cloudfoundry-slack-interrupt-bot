@@ -1,0 +1,5 @@
+name: 'Validate delegate-bot'
+description: 'Validates the config of slack delegate bot.'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
